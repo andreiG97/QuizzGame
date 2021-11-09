@@ -4,11 +4,14 @@ class QuizBrain:
         self.q_list = q_list
 
     def question_display(self):
-        flag = True
-        while flag:
+        score = 0
+        while self.q_number < len(self.q_list):
             current = self.q_list[self.q_number]
-            q = input(f"Q.{self.q_number + 1} " + current.text + 'True/False\n')
-            if q == current.answer:
-                self.q_number += 1
+            self.q_number += 1
+            q = input(f"Q.{self.q_number} " + current.text + 'True/False\n')
+            if q.lower() == current.answer.lower():
+                score += 1
+                print(f"You are right.\n Your score is {score}/{self.q_number}")
             else:
-                flag = False
+                print(f"You are wrong.\n Your score is {score}/{self.q_number}")
+
